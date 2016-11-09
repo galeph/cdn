@@ -1,0 +1,127 @@
+{
+	"name": "about",
+	"version": "1.1.24",
+	"description": "about to multi-services",
+	"keywords": [
+		"cdn",
+		"blog",
+		"api",
+		"cron"
+	],
+	"author": {
+		"name": "alejonext",
+		"email": "alejonext@gmail.com",
+		"url": "http://www.alejonext.co/"
+	},
+	"homepage": "http://about.galeph.com/",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:galeph/cdn.git"
+	},
+	"dependencies": {
+		"angular": "1.5.0",
+		"angular-deckgrid": "alejonext/angular-deckgrid",
+		"angular-file-directive": "vpegado/angular-file-directive",
+		"angular-messages": "1.5.0",
+		"angular-moment": "1.0.0-beta.4",
+		"angular-re-captcha": "0.2.0",
+		"angular-resource": "1.5.0",
+		"angular-route": "1.5.0",
+		"angular-sanitize": "1.5.0",
+		"angular-socket-io": "0.7.0",
+		"angular-touch": "1.5.0",
+		"angularjs-viewhead": "0.0.1",
+		"angulartics": "1.0.3",
+		"angulartics-google-analytics": "0.1.4",
+		"async": "1.5.2",
+		"body-parser": "1.15.0",
+		"browserify": "13.0.0",
+		"bundle-collapser": "1.2.1",
+		"express": "4.13.4",
+		"ghost": "0.7.8",
+		"html5shiv": "3.7.3",
+		"mailchimp-api": "2.0.7",
+		"match-media": "0.2.0",
+		"matchmedia": "0.1.2",
+		"mega": "0.2.0",
+		"ment.io": "0.9.23",
+		"mime": "1.3.4",
+		"moment": "2.11.2",
+		"mongodb-uri": "0.9.7",
+		"mongoose": "4.4.4",
+		"mongoose-findorcreate": "0.1.2",
+		"mongoose-for-types": "1.0.5",
+		"mongoose-json-select": "0.2.1",
+		"ng-dialog": "0.5.8",
+		"ng-infinite-scroll": "1.2.1",
+		"ngsticky": "1.7.12",
+		"node-qs-serialization": "0.0.2",
+		"node-sass": "3.4.2",
+		"nodemailer": "2.2.1",
+		"nodemailer-html-to-text": "1.0.2",
+		"nodemailer-sendmail-transport": "1.0.0",
+		"nodemailer-smtp-pool": "2.5.1",
+		"pg": "4.4.6",
+		"pg-hstore": "2.3.2",
+		"placeholder": "1.0.2",
+		"request": "2.69.0",
+		"sequelize": "3.19.3",
+		"sequelize-mysql": "1.7.0",
+		"serve-favicon": "2.3.0",
+		"socket.io-client": "1.4.5",
+		"uglifyify": "3.0.1",
+		"underscore": "1.8.3",
+		"underscore.string": "3.2.3",
+		"vhost": "3.0.2"
+	},
+	"private": true,
+	"main": "server.js",
+	"scripts": {
+		"postinstall": "npm cache clean",
+		"start": "node server.js"
+	},
+	"env": {
+		"service": "[NAME-HEADER-HTTP]",
+		"id": "[ID-DEPLOY]",
+		"min" :  "[ID-MIN]",
+		"mongo": "[MONGODB-URI]",
+		"ip": "[IP-MACHINE]",
+		"node": "[STATUS]",
+		"domain": {
+			"api" : "api.[DOMAIN-MASTER]",
+			"about" : "about.[DOMAIN-MASTER]",
+			"error" : "www.[DOMAIN-MASTER]"
+		},
+		"check": {
+			"number": 1,
+			"time": "week"
+		},
+		"compress": {
+			"css": true,
+			"js": true
+		},
+		"smtp": {
+			"host": "[HOST-SMTP]",
+			"port": 465,
+			"pass": "[PASSWORD]",
+			"user": "[USER]"
+		},
+		"db": {
+			"type": "pg",
+			"password": "[DB-PASSWORD]",
+			"username": "[DB-USER]",
+			"host": "[DB-HOST]",
+			"name": "[DB-NAME]",
+			"port": 5432
+		},
+		"other": {
+			"password": "bar",
+			"username": "foo",
+			"name": "other"
+		},
+		"mailgun" : {
+			"user" : "[USER-MAILGUN]",
+			"pass" : "[PASSWORD]"
+		}
+	}
+}

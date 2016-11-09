@@ -1,0 +1,32 @@
+{
+	"name": "about",
+	"version": "1.1.24",
+	"description": "about to multi-services",
+	"keywords": [
+		"cdn",
+		"blog",
+		"api",
+		"cron"
+	],
+	"author": {
+		"name": "alejonext",
+		"email": "algo@alejonext.co",
+		"url": "http://www.alejonext.co/"
+	},
+	"homepage": "http://about.galeph.com/",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/galeph/cdn"
+	},
+	"engines": {
+		"node": "0.10.*",
+		"npm": "1.0.0"
+	},
+	"dependencies": {},
+	"devDependencies": {},
+	"bundleDependencies": [],
+	"private": true,
+	"browser": {
+		"api" : "./api/config.json"
+	}
+}

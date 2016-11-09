@@ -1,0 +1,12 @@
+<section class="line">
+	{{#foreach posts}}
+		<a href="{{url}}" class="list ng-column-group {{post_class}}">
+			<article class="half-padding article double-top-space" {{#if image}}style="background-image: url({{image absolute="true"}})"{{/if}}>
+				<section class="text xlarge-55 large-55 medium-70 small-80 tiny-90 push-{{#if @even}}left{{else}}right{{/if}} double-bottom-padding top-padding horizontal-padding" >
+					<h2>{{title}}</h2>
+					{{content characters=163}}
+				</section>
+			</article>
+		</a>
+	{{/foreach}}
+</section>

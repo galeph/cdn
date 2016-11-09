@@ -1,0 +1,41 @@
+// JS UI COMPONENTS
+
+// Date picker
+$datepicker-bgColor			: $white;
+$datepicker-cell-color		: $grey-75;
+$datepicker-header-bg		: $grey-10;
+$datepicker-cellHover		: $grey-10;
+$datepicker-active-bg		: $blue;
+$datepicker-active-color	: $white;
+$datepicker-fontSize		: 13px;
+$datepicker-inactive-color	: $grey-30;
+
+$calendar-cell-width        : 2.4em;
+$calendar-month-width       : $calendar-cell-width * 7;
+$calendar-padding           : .3em;
+$calendar-total-width       : $calendar-month-width + ($calendar-padding * 2);
+
+// Sortable list
+$sortable-list-height       : 40px;
+
+// Progress bars
+$progress-bar-height        : 1.8em;
+$progress-bar-fontSize      : .813em;
+$progress-bar-color         : $black;
+$progress-bar-bg            : $grey-5;
+
+// Tooltips
+$tooltip-class-name             : tool;
+$tooltip-padding-vertical       : 8px; //0.5em;
+$tooltip-padding-horizontal     : 10px; // 0.6em;
+$tooltip-background-color       : $grey-85;;
+$tooltip-font-size              : 12px; //0.8em;
+$tooltip-text-color             : $grey-10;
+$tooltip-height                 : $tooltip-font-size + 2 * $tooltip-padding-vertical !default;
+$tooltip-arrow-border-width     : 6px !default;
+$tooltip-arrow-OffsetX          : 3 * $tooltip-arrow-border-width !default;
+$tooltip-textShadowDarkenAmount : 25% !default;
+$tooltip-distance-translate     : 8px !default;
+$tooltip-show-delay             : 100ms !default;
+$tooltip-hide-delay             : 500ms !default;
+$tooltip-zIndex                 : 1000000 !default;

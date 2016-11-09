@@ -1,0 +1,55 @@
+{
+	"name": "[NAME-APP]",
+	"file": "[ID-WINDOW]",
+	"search": "q=",
+	"comment": 163,
+	"com": true,
+	"modules": [
+		"ng",
+		"ngResource",
+		"akoenig.deckgrid",
+		"angularMoment",
+		"btford.socket-io",
+		"infinite-scroll",
+		"ngDialog",
+		"ngFile",
+		"ngMessages",
+		"ngRoute",
+		"ngSanitize",
+		"reCAPTCHA",
+		"sticky",
+		"viewhead",
+		"angulartics",
+		"angulartics.google.analytics"
+	],
+	"config1": [
+		"$scope",
+		"$location",
+		"socket",
+		"$timeout"
+	],
+	"config": [
+		"$logProvider",
+		"$sceDelegateProvider",
+		"$compileProvider",
+		"$locationProvider",
+		"reCAPTCHAProvider",
+		"KEY",
+		"$httpProvider",
+		"$routeProvider",
+		"SESSION",
+		"URL",
+		"$analyticsProvider",
+		"USER"
+	],
+	"recap": {
+		"theme": "custom",
+		"custom_theme_widget": "recaptcha_widget"
+	},
+	"white": [
+		"http(s)?://galeph\\.com/(.*)/?$",
+		"http(s)?://(.*)\\.galeph\\.com/(.*)/?$",
+		"http(s)?://(.*)\\.coinbase\\.com/(.*)/?$",
+		"http(s)?://doorbell\\.io/(.*)/?$"
+	]
+}

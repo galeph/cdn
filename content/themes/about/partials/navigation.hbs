@@ -1,0 +1,35 @@
+<header class="vertical-padding" {{#if @blog.cover}}style="background-image: url({{@blog.cover}})"{{/if}} >
+	<nav class="ng-navigation ng-grid ie7 bing">
+		<ul class="menu horizontal top push-left">
+			<li>
+				<a href="{{@blog.url}}" class="text-right brand content">
+					{{#if @blog.logo}}
+						<img src="{{@blog.logo}}" alt="{{@blog.title}}" />
+					{{else}}
+						<h1>{{@blog.title}}</h1>
+					{{/if}}
+				</a>
+			</li>
+		</ul>
+		{{#if @blog.description}}
+			<ul class="menu horizontal top push-right">
+				<li>
+					<a href="{{@blog.url}}" class="text-right brand content">{{@blog.description}}</a>
+				</li>
+			</ul>
+		{{/if}}
+	</nav>
+	<nav class="ng-navigation ng-grid ie7 double-top-padding ">
+		<ul class="menu horizontal white all-100 hide-tiny hide-small">
+			{{#foreach navigation}}
+				<li class="{{#if current}}active{{/if}}" role="presentation"><a href="{{url absolute="true"}}">{{label}}</a></li>
+			{{/foreach}}
+		</ul>
+		<ul class="menu vertical white all-100 hide-xlarge hide-large hide-medium show-tiny show-small ">
+			{{#foreach navigation}}
+				<li class="{{#if current}}active{{/if}}" role="presentation"><a href="{{url absolute="true"}}">{{label}}</a></li>
+			{{/foreach}}
+		</ul>
+	</nav>
+</header>
+

@@ -1,0 +1,132 @@
+@mixin generate-quick-start ($breakpoints) {
+
+	.#{$grid-column-group-class-name}[deckgrid]::before {
+		font-size: 0;
+	}
+
+	@each $breakpoint in $breakpoints {
+
+		$media:             nth($breakpoint,1);
+		$class-name:        nth($breakpoint,2);
+		$minimum-width:     nth($breakpoint,3);
+		$maximum-width:     nth($breakpoint,4);
+		$gutter-width:      nth($breakpoint,5);
+		$base-font-size:    nth($breakpoint,6);
+		$no-media-query:    nth($breakpoint,7);
+
+		@if $minimum-width and not $maximum-width {
+			/* for #{$class-name} screens */
+			@media #{$media} and (min-width: $minimum-width) {
+				/* your css for #{$class-name} screens goes here ... */
+				.#{$grid-column-group-class-name}[deckgrid]::before {
+					content: '3 .column.all-33';
+				}
+				.error-def {
+					height: 30em;
+				}
+				
+			}
+		}
+
+		@if $minimum-width and $maximum-width {
+			$maxColmuns : 250;
+			/* for #{$class-name} screens */
+			@media #{$media} and (min-width: $minimum-width) and (max-width: $maximum-width) {
+				$numb1 : $minimum-width / 2;
+				@if $numb1 > $maxColmuns {
+					$numb2 : $minimum-width / 3;
+					@if $numb2 > $maxColmuns {
+						.#{$grid-column-group-class-name}[deckgrid]::before {
+							content: '3 .column.all-33';
+						}
+						.error-def {
+							height: 30em;
+						}
+						
+					} @else {
+						.#{$grid-column-group-class-name}[deckgrid]::before {
+							content: '2 .column.all-50';
+						}
+						.error-def {
+							height: 25em;
+						}
+					}
+				} @else { 
+					.#{$grid-column-group-class-name}[deckgrid]::before {
+						content: '1 .column.all-100';
+					}
+					.#{$tabs-class-name} {
+						&.flex {
+							display : block;
+						}
+					}
+					.error-def {
+						height: 20em;
+					}
+				}
+				
+				/* your css for #{$class-name} screens goes here ... */
+
+			}
+		}
+
+		@if not $minimum-width and $maximum-width {
+			/* for #{$class-name} screens */
+			@media #{$media} and (max-width: $maximum-width) {
+
+				.#{$grid-column-group-class-name}[deckgrid]::before {
+					content: '1 .column.all-100';
+				}
+				.#{$tabs-class-name} {
+					&.flex {
+						display : block;
+					}
+				}
+				.error-def {
+					height: 20em;
+				}
+			}
+		}
+	}
+}
+
+// @mixin generate-quick-start ($breakpoints) {
+
+// 	@each $breakpoint in $breakpoints {
+
+// 		$media:             nth($breakpoint,1);
+// 		$class-name:        nth($breakpoint,2);
+// 		$minimum-width:     nth($breakpoint,3);
+// 		$maximum-width:     nth($breakpoint,4);
+// 		$gutter-width:      nth($breakpoint,5);
+// 		$base-font-size:    nth($breakpoint,6);
+// 		$no-media-query:    nth($breakpoint,7);
+
+// 		@if $minimum-width and not $maximum-width {
+// 			/* for #{$class-name} screens */
+// 			@media #{$media} and (min-width: $minimum-width) {
+				
+// 				/* your css for #{$class-name} screens goes here ... */
+
+// 			}
+// 		}
+
+// 		@if $minimum-width and $maximum-width {
+// 			/* for #{$class-name} screens */
+// 			@media #{$media} and (min-width: $minimum-width) and (max-width: $maximum-width) {
+				
+// 				/* your css for #{$class-name} screens goes here ... */
+
+// 			}
+// 		}
+
+// 		@if not $minimum-width and $maximum-width {
+// 			/* for #{$class-name} screens */
+// 			@media #{$media} and (max-width: $maximum-width) {
+				
+// 				/* your css for #{$class-name} screens goes here ... */
+
+// 			}
+// 		}
+// 	}
+// }

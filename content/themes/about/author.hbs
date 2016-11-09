@@ -1,0 +1,18 @@
+{{!< default}}
+
+{{> excerpts}}
+
+<header class="animated fadeIn" {{#if @blog.cover}}style="background-image: url({{@blog.cover}})"{{/if}}>
+	<div class="container" data-stellar-ratio="0.75">
+		<div class="title animated fadeInUp">
+			<h1>{{author.name}}</h1>
+			<p>{{author.bio}}</p>
+		</div>
+		<div class="sidebar text-right meta">
+			<div class="published animated fadeInUp">
+				<strong>{{plural pagination.total empty="No ha publicado" singular="Tiene solo uno articulo" plural="% articulos"}}</strong>
+			</div>
+		</div>
+	</div>
+</header>
+

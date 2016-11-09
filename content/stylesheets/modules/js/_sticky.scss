@@ -1,0 +1,13 @@
+.#{$ink-class-prefix}-sticky-stuck {
+	position: fixed;
+	&.#{$ink-class-prefix}-profile { 
+		top: 260px;
+	}
+}
+
+.#{$ink-class-prefix}-stuck {
+	&.#{$ink-class-prefix}-profile { 
+		margin-top: 415px;
+	}
+}
+

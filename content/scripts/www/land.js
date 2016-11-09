@@ -1,0 +1,16 @@
+window[require('api').file]
+	.service('prop',		require('../api/service/prop.js'))
+	.service('socket',		require('../api/service/socket.js'))
+	.filter('max',			require('../www/filter/max.js'))
+	.directive('alert',		require('../api/directive/alert.js'))
+	.directive('goNow',		require('../api/directive/goNow.js'))
+	.directive('isUnique',	require('../auth/directive/tester.js'))
+	.directive('ngIcon',	require('../api/directive/icon.js'))
+	.directive('ngProgress',require('../api/directive/progress.js'))
+	.directive('ngToster',	require('../api/directive/toast.js'))
+	.directive('reInput',	require('../auth/directive/inputs.js'))
+	.directive('rePass',	require('../auth/directive/repass.js'))
+	.directive('right',		require('../api/directive/resize.js'))
+	.controller('Creator',	require('../auth/controller/maker.js'))
+	.config(require('./lconfig.js'))
+	.run(require('../api/service/run.js'));

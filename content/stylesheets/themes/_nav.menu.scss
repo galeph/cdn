@@ -1,0 +1,30 @@
+// INK:NAVIGATION:MENU
+.#{$navigation-class-name} {
+
+	&.white  { @include nav-background($white);  }
+	&.grey   { @include nav-background($grey-15);}
+	&.black  { @include nav-background($grey-90);}
+	&.blue   { @include nav-background($blue);   }
+	&.green  { @include nav-background($green);  }
+	&.orange { @include nav-background($orange); }
+	&.red    { @include nav-background($red);    }
+	&.auto   { overflow : auto; }
+	
+	ul {
+		
+		&.menu {
+
+			// defines default theme
+			@include nav-menu();
+
+			// defines custom themes
+			&.white     { @include nav-menu($white); }
+			&.grey      { @include nav-menu($grey-15); }
+			&.black     { @include nav-menu($grey-90); }
+			&.blue      { @include nav-menu($blue); }
+			&.green     { @include nav-menu($green); }
+			&.orange    { @include nav-menu($orange); }
+			&.red       { @include nav-menu($red); }
+		}
+	}
+}

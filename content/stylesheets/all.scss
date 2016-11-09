@@ -1,0 +1,622 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic|Roboto+Condensed:400,400italic,700,300italic,300,700italic|Roboto+Slab:400,100,300,700);
+@import "config/colors";
+
+// Import Compass Core
+@import "contrib/compass/css3";
+@import "contrib/compass/utilities";
+@import "contrib/font-awesome/font-awesome";
+
+@import "config/common";
+@import "config/classnames";
+@import "config/typography";
+@import "config/grid";
+@import "config/forms";
+@import "config/tables";
+@import "config/navigation";
+@import "config/images";
+@import "config/js";
+
+@import "functions/_js-bridge.scss";
+@import "mixins/typography";
+@import "mixins/utils";
+@import "mixins/themeing";
+
+@import "modules/images";
+@import "modules/typography";
+@import "modules/tables";
+
+@import "themes/tables";
+
+// IMPORT JS COMPONENTS STYLING
+@import "modules/js/animate";
+//@import "modules/js/carousel";
+//@import "modules/js/datepicker";
+//@import "modules/js/drawer";
+//@import "modules/js/modal";
+@import "modules/js/progressbar";
+//@import "modules/js/sortable.list";
+@import "modules/js/sticky";
+@import "modules/js/tabs";
+//@import "modules/js/tagfield";
+@import "modules/js/tooltips";
+@import "modules/js/treeview";
+
+@import "mixins/quick-start";
+
+@include generate-quick-start($grid-breakpoints);
+
+.#{$ink-class-prefix}-toster {
+	z-index: 100;
+	bottom:0;
+	.white {
+		background-color : $white;
+		@include border-radius($border-radius);
+	}
+}
+
+#networks {
+	a, .a {
+		//color :$black;
+		&:hover {
+			//color :$black;
+			text-decoration: none;
+		}
+	}
+}
+.inline {
+	display :inline;
+}
+.overflow {
+	overflow: hidden;
+	> h4 {
+		margin-top: auto;
+	}
+}
+
+img.avatar {
+	@include border-radius(50%);
+	border : solid 1px $green;
+	width: 2em;
+	height: 2em;
+
+	&.#{$half}{
+		width: 1em;
+		height: 1em;
+	}
+
+	&.#{$quarter} {
+		width: 0.5em;
+		height: 0.5em;
+	}
+
+	&.#{$double} {
+		width: 4em;
+		height: 4em;
+	}
+
+	&.changes {
+		position: absolute;
+		margin-top: -0.1em;
+	}	
+}
+
+a.avatar {
+	h4, h5{
+		&.name.double-left-space {
+			margin-bottom : 0;
+		}
+	}
+}
+
+.upload-card {
+	border-bottom: 1px dashed $grey-10;
+	background-color : $white;
+	position : relative;
+	.tags {
+		border-bottom-color : $green;
+		border-bottom-style : dashed;
+		border-bottom-width: 1px;
+	}
+
+	.text {
+		padding: $form-field-padding;
+		font-weight: $form-field-fontWeight;
+		line-height: 2;
+	}
+
+	&:first-child{
+		@include border-radius( $border-radius $border-radius 0 0);	
+	}
+
+	&:last-child{
+		@include border-radius( 0 0 $border-radius $border-radius);
+		border-bottom-color: transparent;
+	}
+
+	&:last-child:first-child{
+		@include border-radius($border-radius);
+	}
+
+}
+
+body{
+	.super-card { 
+		.#{$navigation-class-name}{
+			.pills {
+				&.more {
+				}
+				&.menus {
+					top : -2.3em;
+				}
+			}
+			&.under-radius {
+				@include border-radius(0 0 $border-radius $border-radius);
+			}
+		}
+		.cover {
+			padding-top : 10em;
+			background-repeat: no-repeat;
+			background-position: center bottom;
+			//background-attachment: fixed;
+			@include experimental(background-size, cover);
+			@include border-radius( 0 0 $border-radius $border-radius );
+		}
+	}	
+}
+
+body.#{$ink-class-prefix}-print{
+	background-color: $white;
+}
+
+body.#{$ink-class-prefix}-profile, body.#{$ink-class-prefix}-shop {
+	.super-card { 
+		.#{$navigation-class-name}{
+			.pills {
+				&.more {
+				}
+				&.menus {
+					top : 0.5em;
+				}
+			}
+		}
+		.item, .card-user{
+			@include border-radius($border-radius $border-radius 0 0);
+			&.open {
+				@include border-radius(0);
+			}
+		}
+	}
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.super-card {
+	border : 1px solid $grey-5;
+	background-color : $white;
+	position : relative;
+	@include border-radius($border-radius);
+	.#{$navigation-class-name}{
+		position : relative;
+		.pills {
+			display : none;
+			position : absolute;
+			&.more {
+				bottom : 0;
+			}
+			&.menus {
+				right: 0;
+				z-index: 90;
+			}
+		}
+	}
+
+	.card-user {
+		//position : absolute;
+		//display: none;
+		//background: rgba( red($white), green($white), blue($white), 0.8 ) ;
+		a {
+			&:hover {
+				text-decoration: none;
+			}
+			> div {
+				overflow: hidden;
+			}
+		}
+		.text-margin {
+			margin-bottom: 0.5em;
+		}
+	}
+
+	&:hover {
+		.#{$navigation-class-name}{
+			.pills{
+				display: block;	
+			}
+		}
+		.card-user {
+			display: block;	
+		}
+	}
+
+	.tags {
+		border-bottom-color : $green;
+		border-bottom-style : dashed;
+		border-bottom-width: 1px;
+	}
+
+	.text {
+		padding: $form-field-padding;
+		font-weight: $form-field-fontWeight;
+		line-height: 2;
+	}
+}
+
+[role=topbar], #topbar {
+	background: $white;
+	z-index: 100;
+	top: 0;
+	i.#{$fa-css-prefix}, .#{$fa-css-prefix} {
+		color : $green;
+	}
+
+	.control {
+		.#{$fa-css-prefix}-lg.#{$fa-css-prefix}-search {
+			top : 0.6em;
+			left: 0.5em;
+		}	
+	}
+
+	.top {
+		color : $link-color;
+	}
+	.logo{
+		a {
+			padding: 0.2em 1em;
+			&:hover {
+				background : transparent;
+			}
+		}
+	}
+	.form {
+		position:relative;
+		overflow: visible;
+		form.search {
+			position:absolute;
+			left: 6.7em;
+			right: 38em;
+		}
+		.control-group, .control {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+
+		input#ser {
+			color : $black;
+			&:focus, &:hover {
+				color : $black;
+			}
+			
+		}
+		input#ser {
+			@include transition(compact(all 0.5s ease-in-out));
+			height: 42px;
+			padding-bottom: 0.74em;
+			padding-top : 0.74em;
+			background: $white;
+			border-color: $white;
+			border-bottom-width: 0;
+			border-top-width: 0;
+			@include border-radius($border-radius $border-radius 0 0); // 20px 
+			&:focus, &:hover {
+				@include box-shadow(none);
+				background : $grey-5;
+				outline: 0 none;
+				border-color: $grey-5;
+				color : $black;
+			}
+
+		}
+	}
+	
+	ul.menu{
+		li {
+			a.icon {
+				position: relative;
+				color : $green;
+				> span.badge{
+					position: absolute;
+					top : 0.5em;
+					right: 0.5em;
+					font-size: 0.47em;
+					padding-top : 0;
+					padding-bottom:0;
+				}
+			}
+		}
+	}
+}
+
+li > a.avatar{
+	position: relative;
+	&.name{
+		margin-right: .5em;	
+	}
+	.out{
+		position : absolute;
+		top: -.5em;
+	}
+}
+
+
+$max : 20em;
+
+.body {
+	//margin-top : 1500em;
+	&.spaces {
+		padding-top: $max + 7.8;
+	}
+}
+.landing, .login, .auth {
+	h1, h2, h3, h4, h5, h6, .#{$fa-css-prefix}-2x {
+		color : $green;
+	}
+	.iconz, .text {
+		border-bottom : solid  1px $grey-15;
+	}
+}
+
+
+.total {
+	@include border-radius( $border-radius $border-radius );
+}
+
+.profile {
+	top : ( -1 * $max ) + 1;
+	z-index :99;
+	@include border-radius( 0 0 $border-radius $border-radius );
+	.top {
+		padding-top : $max;
+		background-repeat: no-repeat;
+		background-position: center bottom;
+		//background-attachment: fixed;
+		@include experimental(background-size, cover);
+		@include border-radius( 0 0 $border-radius $border-radius );
+	}
+	.#{$navigation-class-name}{
+		@include border-radius( $border-radius $border-radius 0 0 );
+	}
+}
+
+body.landing {
+	.#{$grid-class-name} {
+		> .article {
+			left: 0px;
+			bottom: 0px;
+			width: 100%;
+			height: 100%;
+			display: block;
+			position: fixed;
+			@include transition(compact(top 1s ease-in-out));
+
+			&.f{
+				top: -100%;
+				&.active {
+					top :0%;
+				}
+			}
+
+			&.s{
+				top :100%;
+				&.active {
+					top: 0%;
+				}
+			}
+			
+		}	
+	}
+}
+
+label#recaptcha_image{
+	display : block;
+}
+
+#create {
+	ol {
+		li {
+			margin-right: 2px;
+			margin-left: 2px;
+		}
+	}
+}
+
+ul.commets, section.card {
+	> li {
+		overflow: hidden;
+		border-bottom : solid  1px $grey-15;
+		&:hover {
+			ul.pills {
+				visibility: visible;
+			}	
+		}
+	}
+	.text {
+		word-wrap: break-word;
+	}
+	.user {
+		display : inline-block;
+		h4 {
+			margin-bottom: 0.25em;
+			margin-top: 0.25em;
+		}
+	}
+	.txt {
+		display: block;
+		overflow: hidden;
+	}
+	ul.pills.more {
+		visibility: hidden;
+	}
+	&:hover {
+		ul.pills {
+			visibility: visible;
+		}	
+	}
+}
+
+#comment {
+	.control {
+		overflow: hidden;
+	}
+}
+
+.error-def {
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	background-size: contain;
+	height: 100%;
+	min-height: 25em;
+}
+
+iframe {
+	border : none;
+	font-size : $base-font-size;
+	&.pay {
+		height: 24em;
+		width: 100%;
+		min-width: 500px;
+	}
+}
+
+@-webkit-keyframes ngdialog-fadeout {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes ngdialog-fadeout {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+@-webkit-keyframes ngdialog-fadein {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes ngdialog-fadein {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+$numberPixes : 5em;
+
+.#{$ink-class-prefix}dialog {
+	position: fixed;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+	z-index: 10000;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	*:after, *:before, * {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	
+	&.#{$ink-class-prefix}dialog-closing{
+		.#{$ink-class-prefix}dialog-overlay {
+			-webkit-backface-visibility: hidden;
+			-webkit-animation: ngdialog-fadeout 0.5s;
+			animation: ngdialog-fadeout 0.5s;
+		}
+		.#{$ink-class-prefix}dialog-content {
+			-webkit-backface-visibility: hidden;
+			-webkit-animation: ngdialog-fadeout 0.5s;
+			animation: ngdialog-fadeout 0.5s;
+		}
+	}
+	&.#{$ink-class-prefix}dialog-theme-default {
+		padding-bottom: $numberPixes;
+		padding-top: $numberPixes;
+	}
+	&.#{$ink-class-prefix}dialog-theme-plain {
+		padding-bottom: $numberPixes;
+		padding-top: $numberPixes;
+		.#{$ink-class-prefix}dialog-content {
+			background: $white;
+			color: $grey-70;
+			margin: 0 auto;
+			padding: 1em;
+			position: relative;
+			width: 525px;
+			max-width: 100%;
+			@include border-radius($border-radius);
+		}
+		.#{$ink-class-prefix}dialog-close {
+			border-radius: 5px;
+			cursor: pointer;
+			position: absolute;
+			right: 0px;
+			top: 0px;
+			&:before {
+				border-radius: 3px;
+				color :$grey-60;
+				content: '\00D7';
+				cursor: pointer;
+				font-family: 'Helvetica', Arial, sans-serif;
+				font-size: 1.5em;
+				font-weight: 400;
+				height: 30px;
+				line-height: 26px;
+				position: absolute;
+				right: 3px;
+				text-align: center;
+				top: 3px;
+				width: 30px;
+			}
+		}
+	}
+}
+
+.#{$ink-class-prefix}dialog-overlay {
+	position: fixed;
+	background: rgba(0, 0, 0, 0.4);
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	-webkit-backface-visibility: hidden;
+	-webkit-animation: ngdialog-fadein 0.5s;
+	animation: ngdialog-fadein 0.5s;
+}
+
+.#{$ink-class-prefix}dialog-content {
+	background: white;
+	-webkit-backface-visibility: hidden;
+	-webkit-animation: ngdialog-fadein 0.5s;
+	animation: ngdialog-fadein 0.5s;
+}

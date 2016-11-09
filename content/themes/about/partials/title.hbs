@@ -1,0 +1,13 @@
+<section class="article half-padding bottom-space all-100 overflow" {{#if image}}style="background-image: url({{image absolute="true"}})"{{/if}}>
+	<nav class="text xlarge-55 large-55 medium-70 small-80 tiny-90 push-right double-bottom-padding top-padding horizontal-padding ng-navigation">
+		{{#if page}}
+			<ul class="breadcrumbs white">
+				<li><a href="me">{{date published_at format="MMMM DD, YYYY"}}</a></li>
+				<li><a href="me">Last update: {{date updated_at format="MMMM DD, YYYY"}}</a></li>
+			</ul>
+		{{/if}}
+		<h1>{{title}}</h1>
+	</nav>
+</section>
+
+

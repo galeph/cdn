@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en" prefix="og:http://ogp.me/ns#">
+	<head>
+		{{! Document settings and metadata }}
+		<title>{{meta_title}}</title>
+		<meta charset="utf-8" />
+		<meta name="designer" content="Alejo Next" />
+		<meta name="rating" content="general" />
+		<meta name="keywords" content="{{meta_title}}" />
+		{{! iOS, Android and Windows stuff }}
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="format-detection" content="telephone=yes" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="msapplication-TileImage" content="{{asset 'images/windows-tile.png'}}" />
+		<meta name="msapplication-TileColor" content="#262A2D" />
+		{{! Robots and Viewport }}
+		<meta name="robots" content="index, follow" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		{{! OpenGraph for Facebook }}
+		<meta property="og:title" content="{{meta_title}}" />
+		<meta property="og:image" content="{{@blog.url}}/assets/images/open-graph.png" />
+		<meta property="og:locale" content="en" />
+		{{! Twitter Card }}
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:title" content="{{meta_title}}" />
+		{{#if @blog.cover}}<meta property="twitter:image" content="{{@blog.cover}}" />{{/if}}
+		{{! Icons }}
+		<link rel="icon" href="{{asset 'favicon.ico'}}" />
+		<link rel="icon" sizes="196x196" href="{{asset 'images/android-homescreen.png'}}" />
+		<link rel="apple-touch-icon" href="{{asset 'images/apple-touch-icon.png'}}" />
+		{{! Prerendering and Prefetching }}
+		{{#if @blog.cover}}
+			<link rel="prerender" href="{{@blog.cover}}" />
+			<link rel="prefetch" href="{{@blog.cover}}" />
+		{{/if}}
+		<link rel="dns-prefetch" href="//fonts.google./api/config.jsons.com/" />
+		{{! Scripts and Stylesheets }}
+		<link rel="stylesheet" href="{{asset 'css/about.css'}}" />
+		<link rel="stylesheet" type="text/css" href="https://cdn.galeph.com/css/64u36d.676c7068.css?v=2.8.97" charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="https://cdn.galeph.com/css/64u36d.616c6c.css?v=2.8.97" charset="utf-8"  />
+		<script src="{{asset 'js/html5shiv-printshiv.js'}}"></script>
+		{{! Page-Specific Metadata }}
+		{{{block "meta"}}}
+
+		{{ghost_head}}
+
+	</head>
+	<body class="{{body_class}} ng-grid vertical-space body">
+		{{navigation}}
+	
+		<section class="ng-column-group vertical-space" role="body">{{{body}}}</section>
+
+		<footer class="site-footer top-space top-padding">
+			<div class="clearfix double-bottom-space">
+				<nav class="ng-navigation ng-grid ie7 xlarge-25 large-25 medium-33 small-100 tiny-100 push-left ">
+					<ul class="menu vertical white top">
+						<li class="heading"><a href="https://www.galeph.com/">User</a></li>			
+						<li><a href="https://auth.galeph.com/create">Register</a></li>
+						<li><a href="https://auth.galeph.com/login">Login</a></li>
+						<li><a href="https://auth.galeph.com/recover">Lost the password</a></li>
+					</ul>
+				</nav>
+				<nav class="ng-navigation ng-grid ie7 xlarge-25 large-25 medium-33 small-100 tiny-100 push-left">
+					<ul class="menu vertical white top">
+						<li class="heading"><a href="https://search.galeph.com/top">Most</a></li>
+						<li><a href="https://search.galeph.com/explore">Explore</a></li>
+						<li><a href="https://search.galeph.com/top">Top</a></li>
+					</ul>
+					<ul class="menu vertical white top-space">
+						<li class="heading"><a href="https://shop.galeph.com/cart">Shop</a></li>
+						<li><a href="https://shop.galeph.com/bays">Bays</a></li>
+						<li><a href="https://shop.galeph.com/sell">Sell</a></li>
+					</ul>
+				</nav>
+				<nav class="xlarge-25 large-25 medium-33 small-100 tiny-100 push-right">
+					<div class="button-group top-space push-center">
+						<a target="_blank" href="https://www.facebook.com/galeph" class="all-25 button"><i class="icon icon-facebook icon-lg"></i></a>
+						<a target="_blank" href="https://twitter.com/gale_ph" class="all-25 button"><i class="icon icon-twitter icon-lg"></i></a>
+						<a target="_blank" href="https://plus.google.com/b/112330520573707428234" class="all-25 button"><i class="icon icon-google-plus icon-lg"></i></a>
+						<a target="_blank" href="http://wall.galeph.com/" class="all-25 button"><i class="icon icon-tumblr icon-lg"></i></a>
+					</div>
+					<section class="copyright align-center top-space"><a href="{{@blog.url}}">Galeph </a> &copy; {{date format="YYYY"}}</section>
+				</nav>
+			</div>
+		</footer>
+
+		{{ghost_foot}}
+		{{! Deferred scripts }}
+	</body>
+</html>

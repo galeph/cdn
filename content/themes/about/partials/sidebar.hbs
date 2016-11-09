@@ -1,0 +1,11 @@
+<nav class="ng-navigation">
+	{{#if tags}}
+		<ul class="pills green" id="over">
+			{{#foreach tags}}
+				<li>
+					<a href="{{url}}">{{name}}</a>
+				</li>
+			{{/foreach}}
+		</ul>
+	{{/if}}
+</nav>

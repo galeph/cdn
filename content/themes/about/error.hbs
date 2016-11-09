@@ -1,0 +1,19 @@
+{{!< default}}
+
+<section class="padding">
+	<article class="double-space error-def">
+		<h1 class="error-code">Error <s>51</s> {{code}}</h1>
+		<p class="fw-700">{{message}}</p>
+		{{#if stack}}
+			<ul class="error-stack-list">
+				{{#each stack}}
+					<li>
+						at
+						{{#if function}}<em class="error-stack-function">{{function}}</em>{{/if}}
+						<span class="error-stack-file">({{at}})</span>
+					</li>
+				{{/each}}
+			</ul>
+		{{/if}}
+	</article>
+</section>

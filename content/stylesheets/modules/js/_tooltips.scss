@@ -1,0 +1,220 @@
+// mixin to generate different color style tooltips
+@mixin hint-type($color, $isInsideSelector: "true") {
+	&:after {
+		background-color: $color;
+		text-shadow: 0 -1px 0px darken($color, $tooltip-textShadowDarkenAmount);
+	}
+
+	@each $position in top, bottom, left, right {
+		// if the current mixin is called from within a selector, use a '&'. Otherwise not.
+		&.#{$position}:before {
+			border-#{$position}-color: $color;
+		}
+	}
+}
+
+@mixin vertical-positioned-tooltip($propertyY, $transitionDirection) {
+	&:before {
+		// get the arrow out
+		margin-#{$propertyY}: -2 * $tooltip-arrow-border-width;
+	}
+
+	&:after {
+		// bring back the tooltip by some offset so that arrow doesn't stick at end
+		margin-left: -1 * $tooltip-arrow-OffsetX;
+	}
+
+	&:before, &:after {
+		#{$propertyY}: 100%;
+		left: 50%;
+	}
+
+	&:before:hover, &:after:focus {
+		@include transform( unquote("translateY(#{$tooltip-distance-translate * $transitionDirection})") );
+	}
+}
+
+@mixin horizontal-positioned-tooltip($propertyX, $transitionDirection) {
+	&:before {
+		// get the arrow out
+		margin-#{$propertyX}: -2 * $tooltip-arrow-border-width;
+		// bring back to center
+		margin-bottom: -1 * $tooltip-arrow-border-width;
+	}
+
+	&:after {
+		// bring back to center
+		margin-bottom: -1 * floor($tooltip-height / 2);
+	}
+
+	&:before, &:after {
+		#{$propertyX}: 100%;
+		bottom: 50%;
+	}
+
+	&:before:hover, &:after:focus {
+		@include transform( unquote("translateX(#{$tooltip-distance-translate * $transitionDirection})") );
+	}
+}
+
+.#{$tooltip-class-name}, [data-#{$tooltip-class-name}] {
+	position: relative;
+	display: inline-block;
+
+	&:hover:before, &:hover:after,
+	&:focus:before, &:focus:after {
+		visibility: visible;
+		opacity: 1;
+		// $tooltip-show-delay will apply as soon as element is hovered.
+		@include experimental('transition-delay', $tooltip-show-delay);
+	}
+
+	&:before, &:after {
+		position: absolute;
+
+		// HACK: Trigger hardware accelerated rendering, otherwise transform was not
+		// working on a hidden element
+		@include experimental('transform', translate3d(0, 0, 0));
+
+		// HACK: visibility is set to hidden because IE & Opera don't support
+		// pointer-events on HTML content yet because of which hovering a hidden tooltip
+		// shows the tooltip.
+		visibility: hidden;
+		opacity: 0;
+		z-index: $tooltip-zIndex;
+		// shouldn't receive pointer events, otherwise even hovering tooltip will make it appear
+		pointer-events: none;
+
+		@include experimental('transition', 0.3s ease);
+		@include experimental('transition-delay', $tooltip-hide-delay);
+	}
+
+	/**
+	 * tooltip arrow
+	 */
+	&:before {
+		content: '';
+		position: absolute;
+		background: transparent;
+		border: $tooltip-arrow-border-width solid transparent;
+		// move z-index 1 up than :after so that it shows over box-shadow
+		z-index: $tooltip-zIndex + 1;
+	}
+
+	/**
+	 * tooltip body
+	 */
+	&:after {
+		content: attr(data-#{$tooltip-class-name}); // The magic!
+		color: $tooltip-text-color;
+		padding: $tooltip-padding-vertical $tooltip-padding-horizontal;
+		font-size: $tooltip-font-size;
+		line-height: $tooltip-font-size; // Vertical centering.
+		white-space: nowrap; // Prevent breaking to new line.
+		text-shadow: 0 -1px 0px darken($tooltip-background-color, $tooltip-textShadowDarkenAmount);
+		box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+	}
+	/**
+	 * Is the normal
+	 */
+
+	@include hint-type($tooltip-background-color);
+
+	/**
+	 * top tooltip
+	 */
+	&.top {
+		@include vertical-positioned-tooltip('bottom', -1);
+	}
+
+	/**
+	 * bottom tooltip
+	 */
+	&.bottom {
+		@include vertical-positioned-tooltip('top', 1);
+	}
+
+	/**
+	 * right tooltip
+	 */
+	&.right {
+		@include horizontal-positioned-tooltip('left', 1);
+	}
+
+	/**
+	 * left tooltip
+	 */
+	&.left {
+		@include horizontal-positioned-tooltip('right', -1);
+	}
+
+	&.error {
+		@include hint-type($error-bg);
+	}
+
+	/**
+	 * Warning
+	 */
+	&.warning {
+		@include hint-type($warning-bg);
+	}
+
+	/**
+	 * Info
+	 */
+	&.info {
+		@include hint-type($info-bg);
+	}
+
+	/**
+	 * Success
+	 */
+	&.success {
+		@include hint-type($success-bg);
+	}
+
+	&.always {
+		&:after, &:before {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		&.top {
+			@include transform( unquote("translateY(#{$tooltip-distance-translate * -1})") );
+		}
+
+		&.bottom {
+			@include transform( unquote("translateY(#{$tooltip-distance-translate})") );
+		}
+
+		&.left {
+			@include transform( unquote("translateX(#{$tooltip-distance-translate * -1})") );
+		}
+
+		&.right {
+			@include transform( unquote("translateX(#{$tooltip-distance-translate})") );
+		}
+	}
+
+	&.rounded {
+		&:after {
+			@include border-radius($border-radius);
+		}
+	}
+
+	// Remove animation from tooltips.
+	&.no-animate {
+		&:before, &:after {
+			@include experimental('transition-duration', 0ms);
+		}
+	}
+
+	// Bounce effect in tooltips.
+	&.bounce {
+		&:before, &:after {
+			-webkit-transition: opacity 0.3s ease, visibility 0.3s ease, -webkit-transform 0.3s cubic-bezier(.71,1.7,.77,1.24);
+			-moz-transition: opacity 0.3s ease, visibility 0.3s ease, -moz-transform 0.3s cubic-bezier(.71,1.7,.77,1.24);
+			transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s cubic-bezier(.71,1.7,.77,1.24);
+		}
+	}
+}
